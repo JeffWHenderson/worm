@@ -5,9 +5,29 @@ import java.awt.Graphics;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
 @SuppressWarnings("serial")
 public class GamePlay extends JPanel {
+	private int[] snakeXLength = new int[750];
+	private int[] snakeYLength = new int[750];
+	
+	private boolean left = false;
+	private boolean right = false;
+	private boolean up = false;
+	private boolean down = false; 
+	
+	private ImageIcon upMouth;
+	private ImageIcon downMouth;
+	private ImageIcon rightMouth;
+	private ImageIcon leftMouth;
+	
+	private ImageIcon snakeImage;
+	
+	private Timer timer;
+	private int delay = 100;
+	
+	
 	private ImageIcon titleImage;
 	
 	public GamePlay() 
