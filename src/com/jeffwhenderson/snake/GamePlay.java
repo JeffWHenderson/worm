@@ -97,8 +97,67 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
-		
+		timer.start();
+		if(right) {
+			for(int i = length - 1; i >= 0; i-- ) {
+				snakeYLength[i + 1] = snakeYLength[i];
+			}
+			for(int i = length; i >= 0; i-- ) {
+				if(i == 0) {
+					snakeXLength[i] = snakeXLength[i] + 25;
+				}else {
+					snakeXLength[i] = snakeXLength[i - 1];
+				}
+				if(snakeXLength[i] > 850)
+					snakeXLength[i] = 25;
+			}
+			repaint();
+		}
+		if(left) {
+			for(int i = length - 1; i >= 0; i-- ) {
+				snakeYLength[i + 1] = snakeYLength[i];
+			}
+			for(int i = length; i >= 0; i-- ) {
+				if(i == 0) {
+					snakeXLength[i] = snakeXLength[i] - 25;
+				}else {
+					snakeXLength[i] = snakeXLength[i - 1];
+				}
+				if(snakeXLength[i]  < 25)
+					snakeXLength[i] = 850;
+			}
+			repaint();
+		}		
+		if(up) {
+			for(int i = length - 1; i >= 0; i-- ) {
+				snakeXLength[i + 1] = snakeXLength[i];
+			}
+			for(int i = length; i >= 0; i-- ) {
+				if(i == 0) {
+					snakeYLength[i] = snakeYLength[i] - 25;
+				}else {
+					snakeYLength[i] = snakeYLength[i - 1];
+				}
+				if(snakeYLength[i]  < 75)
+					snakeYLength[i] = 625;
+			}
+			repaint();
+		}
+		if(down) {
+			for(int i = length - 1; i >= 0; i-- ) {
+				snakeXLength[i + 1] = snakeXLength[i];
+			}
+			for(int i = length; i >= 0; i-- ) {
+				if(i == 0) {
+					snakeYLength[i] = snakeYLength[i] + 25;
+				}else {
+					snakeYLength[i] = snakeYLength[i - 1];
+				}
+				if(snakeYLength[i]  > 625)
+					snakeYLength[i] = 75;
+			}
+			repaint();
+		}
 	}
 
 	@Override
