@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Random;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -21,8 +22,17 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 	
 	private boolean left = false, right = false, up = false, down = false;
 	
-	private ImageIcon upMouth, downMouth, rightMouth, leftMouth, snakeImage;
+	private ImageIcon upMouth, downMouth, rightMouth, leftMouth, snakeImage, apple;
 	private ImageIcon titleImage;
+	private Random random = new Random();
+	
+	private int[] appleXPosition = {25, 50, 75, 100, 125, 150, 175, 200, 225, 250, 275, 300, 325, 350, 375, 400, 425, 450, 475, 500, 525, 550, 575, 600, 625, 650, 675, 700, 725, 750, 775, 800, 825, 850};
+	private int[] appleYPosition = {75, 100, 125, 150, 175, 200, 225, 250, 275, 300, 325, 350, 375, 400, 425, 450, 475, 500, 525, 550, 575, 600, 625};
+	
+	private int xpos = random.nextInt(34); 
+	private int ypos = random.nextInt(23); 
+	
+
 	
 	private Timer timer;
 	private int delay = 100;
@@ -91,6 +101,15 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 				snakeImage.paintIcon(this, g, snakeXLength[i], snakeYLength[i]);
 			}
 		}
+		
+		apple = new ImageIcon("enemy.png");
+		if(appleXPosition[xpos] == snakeXLength[0] && appleYPosition[ypos] == snakeYLength[0]) {
+			length++;
+			xpos = random.nextInt(34);
+			ypos = random.nextInt(23);
+		}
+		
+		apple.paintIcon(this, g, appleXPosition[xpos], appleYPosition[ypos]);
 		
 		g.dispose();
 	}
