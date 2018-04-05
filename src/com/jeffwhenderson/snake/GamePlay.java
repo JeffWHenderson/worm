@@ -102,9 +102,55 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 	}
 
 	@Override
-	public void keyPressed(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		
+	public void keyPressed(KeyEvent e) {
+		if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
+			moves++;
+			right = true;
+			if(!left)
+				right = true;
+			else {
+				right = false;
+				left = true;
+			}
+			up = false;
+			down = false;
+		}
+		if(e.getKeyCode() == KeyEvent.VK_LEFT) {
+			moves++;
+			left = true;
+			if(!right)
+				left = true;
+			else {
+				left = false;
+				right = true;
+			}
+			up = false;
+			down = false;
+		}
+		if(e.getKeyCode() == KeyEvent.VK_UP) {
+			moves++;
+			up = true;
+			if(!down)
+				up = true;
+			else {
+				up = false;
+				down = true;
+			}
+			left = false;
+			right = false;
+		}
+		if(e.getKeyCode() == KeyEvent.VK_DOWN) {
+			moves++;
+			down = true;
+			if(!up)
+				down = true;
+			else {
+				down = false;
+				up = true;
+			}
+			left = false;
+			right = false;
+		}
 	}
 
 	@Override
